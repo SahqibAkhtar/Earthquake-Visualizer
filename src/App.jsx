@@ -22,7 +22,7 @@ export default function App() {
   const [quakes, setQuakes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  const [time, setTime] = useState(new Date());
 
   const [period, setPeriod] = useState('day'); // hour | day | week
   const [minMag, setMinMag] = useState(0);
@@ -38,12 +38,29 @@ export default function App() {
   const [playTimeline, setPlayTimeline] = useState(false);
   // const [flyCoords, setFlyCoords] = useState(null);///////
 
+  
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+  }, [darkMode]);
+
+   // Keep clock ticking
+  useEffect(() => {
+    const id = setInterval(() => {
+      setTime(new Date());
+    }, 1000); // update every second
+    return () => clearInterval(id); // cleanup on unmount
+  }, []);
 
 
   // Fetch quake data
   useEffect(() => {
     let cancelled = false;
     const url = urlForPeriod(period);
+
     async function load() {
       setLoading(true);
       setError(null);
@@ -65,8 +82,6 @@ export default function App() {
     }
 
     load();
-
-    
 
     // auto-refresh handling
     let id = null;
@@ -148,10 +163,11 @@ const doSearch = async (query) => {
   }
 
   return (
+    
     <div className="app">
       <header className="app-header">
-  <h1>🌍 Earthquake Visualizer</h1>
-  <p>Last updated: {new Date().toLocaleString()}</p>
+  <h1>🌍 Earthquake Visualizer </h1>
+  <p>Last updated: {time.toLocaleString()}</p>
 </header>
 
 

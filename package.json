@@ -2,6 +2,7 @@
   "name": "earthquake-visualizer",
   "private": true,
   "homepage": "https://sahqibakhtar.github.io/Earthquake-Visualizer",
+
   "version": "0.0.0",
   "type": "module",
 
