@@ -69,7 +69,7 @@ export default function Controls({
             checked={autoRefresh}
             onChange={(e) => setAutoRefresh(e.target.checked)}
           />
-          <span>Auto refresh</span>
+          <span>Auto refresh (5min)</span>
         </label>
       </div>
 

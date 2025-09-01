@@ -224,7 +224,7 @@ body.dark .select-wrap select { background: #111; color: #eee; border-color: #2a
 }
 
 footer {
-  padding: 10px 16px;
+  padding:5px;
   background: linear-gradient(135deg, #a0086e, #05787e); /* soft blue gradient */
   color: white;
   text-align: center;
@@ -240,16 +240,6 @@ footer small {
   opacity: 0.85;
 }
 
-@media (max-width: 720px) {
-  .sidebar { width: 90%; left: 5%; right: 5%; top: 140px; }
-  .search-form input { min-width: 120px; }
-}
-
-
-
-
-/* ------------------------------------------------------------- */
-
 /* Tablets and narrow laptops */
 @media (max-width: 900px) {
   .controls { gap: 10px; }
@@ -257,10 +247,15 @@ footer small {
   
 }
 
+@media (max-width: 720px) {
+  .sidebar { width: 90%; left: 5%; right: 5%; top: 140px; }
+  .search-form input { min-width: 120px; }
+  
+}
+
 /* Phones */
 @media (max-width: 600px) {
   .controls { padding: 10px; }
-  .legend { margin-bottom: 80px; }
   .search-form { min-width: 0; flex: 1 1 100%; }
   .range-wrap input[type="range"] { width: 100px; }
 }
@@ -270,8 +265,6 @@ footer small {
   .btn__text { display: none; }         /* icons only */
   .label { display: none; }             /* hide small inline labels */
   .controls { gap: 8px; }
-  .legend { margin-bottom: 30px; }
-
   .btn, .search-form button { padding: 10px; }
 }
 

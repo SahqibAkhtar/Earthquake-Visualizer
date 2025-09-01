@@ -2,11 +2,9 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import Controls from './components/Controls.jsx';
 import MapView from './components/MapView.jsx';
-import EarthquakeMap from "./EarthquakeMap";
 import Legend from './components/Legend.jsx';
 import Sidebar from './components/Sidebar.jsx';
 import { urlForPeriod } from './utils/endpoints.js';
-
 import './styles.css';
 
 const initialCategories = {
@@ -22,7 +20,6 @@ export default function App() {
   const [quakes, setQuakes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [time, setTime] = useState(new Date());
 
   const [period, setPeriod] = useState('day'); // hour | day | week
   const [minMag, setMinMag] = useState(0);
@@ -32,13 +29,10 @@ export default function App() {
 
   const [categories, setCategories] = useState(initialCategories);
   const [refreshTick, setRefreshTick] = useState(0);
-  // const [searchLocation, setSearchLocation] = useState(null); // [lat, lon]
   const [selectedQuake, setSelectedQuake] = useState(null);
-
   const [playTimeline, setPlayTimeline] = useState(false);
-  // const [flyCoords, setFlyCoords] = useState(null);///////
-
   
+
   useEffect(() => {
     if (darkMode) {
       document.body.classList.add("dark");
@@ -46,14 +40,6 @@ export default function App() {
       document.body.classList.remove("dark");
     }
   }, [darkMode]);
-
-   // Keep clock ticking
-  useEffect(() => {
-    const id = setInterval(() => {
-      setTime(new Date());
-    }, 1000); // update every second
-    return () => clearInterval(id); // cleanup on unmount
-  }, []);
 
 
   // Fetch quake data
@@ -83,6 +69,7 @@ export default function App() {
 
     load();
 
+
     // auto-refresh handling
     let id = null;
     if (autoRefresh) {
@@ -90,6 +77,7 @@ export default function App() {
     }
     return () => { cancelled = true; if (id) clearInterval(id); };
   }, [period, refreshTick, autoRefresh]);
+
 
   // Helpers
   function toggleCategory(key) {
@@ -114,6 +102,7 @@ export default function App() {
     }).sort((a,b) => a.time - b.time); // categories is now a direct dependency
   }, [quakes, minMag, categories]);
 
+
   // manual refresh
   function refreshNow() {
     setRefreshTick(t => t + 1);
@@ -127,9 +116,6 @@ const doSearch = async (query) => {
     if (data.features.length > 0) {
       const { lat, lon } = data.features[0].properties;
       console.log("Found location:", lat, lon);
-
-      // ✅ Instead of map.flyTo
-      // setFlyCoords([lat, lon]);
     } else {
         alert("No location found");
     }
@@ -167,11 +153,10 @@ const doSearch = async (query) => {
     <div className="app">
       <header className="app-header">
   <h1>🌍 Earthquake Visualizer </h1>
-  <p>Last updated: {time.toLocaleString()}</p>
+        <p>Last updated: {new Date().toLocaleString()}</p>
+
 </header>
 
-
-      {/* <EarthquakeMap earthquakes={earthquakes} /> */}
 
       <Controls
         period={period}
@@ -208,6 +193,7 @@ const doSearch = async (query) => {
 
       <footer>
         <small>Basemap: OpenStreetMap • Data: USGS • Built for Casey</small>
+
       </footer>
 
       <Sidebar quake={selectedQuake} onClose={() => setSelectedQuake(null)} />

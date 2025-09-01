@@ -56,6 +56,7 @@ export default function MapView({ quakes, loading, error, darkMode, playTimeline
             setDisplayCount(quakes.length);
             return;
         }
+        
         // start from 1 and grow
         setDisplayCount(0);
         let i = 0;
