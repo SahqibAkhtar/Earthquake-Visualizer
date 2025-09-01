@@ -8,6 +8,7 @@
 
   "scripts": {
   "dev": "vite",
+  "start": "vite start",
   "build": "vite build",
   "preview": "vite preview",
   "predeploy": "npm run build",

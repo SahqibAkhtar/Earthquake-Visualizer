@@ -40,8 +40,8 @@ header p:nth-child(3) {
 /* === Responsive Controls Toolbar (override) ============================ */
 .controls {
   position:relative;
-  top: 12px;
-  left: 12px;
+  top: 2px;
+  left: 2px;
   right: 12px;
   z-index: 1002;
   display: flex;
@@ -49,7 +49,7 @@ header p:nth-child(3) {
   justify-content: space-between;
   gap: 12px;
   flex-wrap: wrap;                      /* key: allow wrapping on small screens */
-  background: rgba(255,255,255,0.96);
+  background: rgba(247, 249, 248, 0.96);
   backdrop-filter: blur(4px);
   border: 1px solid rgba(0,0,0,0.08);
   border-radius: 12px;
@@ -254,11 +254,13 @@ footer small {
 @media (max-width: 900px) {
   .controls { gap: 10px; }
   .search-form { flex: 1 1 100%; }      /* put search on its own line if needed */
+  
 }
 
 /* Phones */
 @media (max-width: 600px) {
-  .controls { padding: 8px; }
+  .controls { padding: 10px; }
+  .legend { margin-bottom: 80px; }
   .search-form { min-width: 0; flex: 1 1 100%; }
   .range-wrap input[type="range"] { width: 100px; }
 }
@@ -268,8 +270,16 @@ footer small {
   .btn__text { display: none; }         /* icons only */
   .label { display: none; }             /* hide small inline labels */
   .controls { gap: 8px; }
+  .legend { margin-bottom: 30px; }
+
   .btn, .search-form button { padding: 10px; }
 }
+
+
+
+
+
+
 
 
 /* === Global dark mode =================================== */
