@@ -6,6 +6,7 @@ import EarthquakeMap from "./EarthquakeMap";
 import Legend from './components/Legend.jsx';
 import Sidebar from './components/Sidebar.jsx';
 import { urlForPeriod } from './utils/endpoints.js';
+
 import './styles.css';
 
 const initialCategories = {
