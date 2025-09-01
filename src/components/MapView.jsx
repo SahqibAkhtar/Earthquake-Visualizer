@@ -10,8 +10,7 @@ const map = useMap();
 const layerRef = useRef(null);
 
 useEffect(() => {
-if (layerRef.current) {
-    // layerRef.current = null;
+if (layerRef.current) { // layerRef.current = null;
     try { 
         map.removeLayer(layerRef.current); 
     } catch (e) {
@@ -38,7 +37,8 @@ return () => {
 return null;
 }
 
-export default function MapView({ quakes, loading, error, darkMode, playTimeline, setSelectedQuake, searchLocation, showHeat }) {    const mapRef = useRef(null);
+
+export default function MapView({ quakes, flyCoords, loading, error, darkMode, playTimeline, setSelectedQuake, searchLocation, showHeat }) {    const mapRef = useRef(null);
     const [displayCount, setDisplayCount] = useState(0);
     
     // when searchLocation changes, set view
@@ -56,7 +56,7 @@ export default function MapView({ quakes, loading, error, darkMode, playTimeline
             setDisplayCount(quakes.length);
             return;
         }
-        
+
         // start from 1 and grow
         setDisplayCount(0);
         let i = 0;
@@ -81,6 +81,18 @@ export default function MapView({ quakes, loading, error, darkMode, playTimeline
     ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
     : 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
     
+    function FlyToLocation({ coords }) {
+    const map = useMap();
+    
+    useEffect(() => {
+        if (coords) {
+            map.flyTo(coords, 6); // zoom level 6, adjust as needed
+        }
+    }, [coords, map]);
+    
+    return null;
+}
+
     return (
         <MapContainer
         className="map"
@@ -94,6 +106,7 @@ export default function MapView({ quakes, loading, error, darkMode, playTimeline
         <TileLayer
         attribution='&copy; OpenStreetMap contributors'
         url={tileUrl}
+        
         />
 
         {showHeat ? (
@@ -113,8 +126,6 @@ export default function MapView({ quakes, loading, error, darkMode, playTimeline
             <div>
                 <strong>{q.place}</strong><br />
                 Magnitude: {q.mag}<br />
-                {/* Depth: {q.depth?.toFixed ? q.depth.toFixed(1) : q.depth} km<br /> */}
-                {/* Time: {new Date(q.time).toLocaleString()}<br /> */}
                 <a href={q.link} target="_blank" rel="noreferrer">Details</a>
             </div>
             </Popup>
@@ -125,6 +136,7 @@ export default function MapView({ quakes, loading, error, darkMode, playTimeline
     {loading && <div className="loading">Loading…</div>}
     {error && <div className="error">{error}</div>}
     {!loading && !displayed.length && <div className="no-data">No earthquakes for this filter</div>}
+    <FlyToLocation coords={flyCoords} />  {/* ✅ will zoom when flyCoords updates */}
     </MapContainer>
 );
 }

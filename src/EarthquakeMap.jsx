@@ -45,9 +45,8 @@ const EarthquakeMap = () => {
     if (!searchTerm) return;
     try {
       const response = await fetch(
-        `https://api.geoapify.com/v1/geocode/search?text=${encodeURIComponent(
-          searchTerm
-        )}&apiKey=YOUR_API_KEY`
+        `https://api.geoapify.com/v1/geocode/search?text=${encodeURIComponent(searchTerm)
+          }&apiKey=f9aa09e45ed4407cbeb707b1cf3aff4f`
       );
 
       const data = await response.json();

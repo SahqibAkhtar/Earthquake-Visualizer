@@ -31,6 +31,7 @@ export default function App() {
   const [refreshTick, setRefreshTick] = useState(0);
   const [selectedQuake, setSelectedQuake] = useState(null);
   const [playTimeline, setPlayTimeline] = useState(false);
+
   
 
   useEffect(() => {
@@ -107,15 +108,17 @@ export default function App() {
   function refreshNow() {
     setRefreshTick(t => t + 1);
   }
-
+const [flyCoords, setFlyCoords] = useState(null);
 const doSearch = async (query) => {
+  
   const url = `https://api.geoapify.com/v1/geocode/search?text=${query}&apiKey=${import.meta.env.VITE_GEOAPIFY_KEY}`;
   try {
     const res = await fetch(url);
     const data = await res.json();
-    if (data.features.length > 0) {
+    if (data.features && data.features.length > 0) {
       const { lat, lon } = data.features[0].properties;
       console.log("Found location:", lat, lon);
+       setFlyCoords([lat, lon]);   // ✅ trigger map to zoom
     } else {
         alert("No location found");
     }
@@ -185,8 +188,8 @@ const doSearch = async (query) => {
           darkMode={darkMode}
           playTimeline={playTimeline}
           setSelectedQuake={setSelectedQuake}
-          // searchLocation={searchLocation}
           showHeat={showHeat}
+          flyCoords={flyCoords}   // ✅ pass down
         />
         <Legend categories={categories} toggleCategory={toggleCategory} />
       </div>
