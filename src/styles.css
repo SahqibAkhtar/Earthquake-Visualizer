@@ -1,0 +1,204 @@
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; font-family: system-ui, Arial, sans-serif; }
+
+.app { display: flex; flex-direction: column; min-height: 100%; }
+
+header {
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #a0086e, #05787e); /* soft blue gradient */
+  color: white;
+  text-align: center;
+  border-bottom: 3px solid #0077b6; /* accent border */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: rgb(236, 197, 23);
+}
+
+header p {
+  margin: 6px 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+header p:nth-child(2) {
+  color: #ffe082; /* gold for "Last Updated" */
+}
+
+header p:nth-child(3) {
+  color: #ff6b6b; /* red-orange for "Highest Magnitude" */
+  font-weight: 600;
+}
+
+
+.search-bar {      /*search engine */
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  width: 200px;
+}
+
+
+.controls { 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: rgba(255,255,255,0.95);
+  z-index: 1002; /* above map */ }
+
+.controls label { 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; }
+.controls .checkbox { gap: 6px; }
+
+.controls .controls-left { 
+  display:flex; 
+  gap:12px; 
+  align-items:center; 
+  flex-wrap:wrap; }
+
+.controls .controls-right { 
+  display:flex; 
+  gap:8px; 
+  align-items:center; }
+
+.search-form { display:flex; gap:6px; }
+.search-form input { 
+  padding:6px 8px; 
+  border-radius:6px; 
+  border:1px solid #ddd; 
+  min-width:200px; }
+
+.search-form button { 
+  padding:6px 8px; 
+  border-radius:6px; 
+  border:none; 
+  background:#0077b6; 
+  color:white; 
+  cursor:pointer; }
+
+
+
+.map-wrap { position:relative; flex: 1; }
+.map { height: calc(100vh - 180px); width: 100%; }
+.legend {
+  position:absolute; 
+  bottom: 12px; 
+  left: 12px;
+  background: rgba(255,255,255,0.9); 
+  padding: 8px 10px;
+  border-radius: 8px; 
+  font-size: 13px; 
+  line-height: 1.4;
+  z-index: 1003; 
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.legend .legend-row { 
+  display:flex; 
+  align-items:center; 
+  gap:8px; 
+  margin-top:6px; }
+
+  /* sidebar (details) */
+.sidebar {
+  position: absolute;
+  right: 12px;
+  top: 80px;
+  z-index: 1004;
+  width: 260px;
+  background: rgba(255,255,255,0.98);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+.sidebar .close-btn {
+  position:absolute; 
+  right:8px; 
+  top:8px; 
+  border:none; 
+  background:transparent; 
+  font-size:16px; 
+  cursor:pointer;
+}
+
+
+.loading {
+  position: absolute; top: 12px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 1005;
+  background: rgba(255,255,255,0.9); 
+  padding: 6px 10px; 
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+.error {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1005;
+  background: #ffe0e0;
+  color: #900;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+.no-data {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1005;
+  background: #f8f8f8;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #555;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+footer {
+  padding: 10px 16px;
+  background: linear-gradient(135deg, #a0086e, #05787e); /* soft blue gradient */
+  color: white;
+  text-align: center;
+  border-top: 2px solid #0077b6; /* accent border */
+  font-size: 0.85rem;
+  font-weight: 400;
+  opacity: 0.9;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+}
+
+footer small {
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+@media (max-width: 720px) {
+  .sidebar { width: 90%; left: 5%; right: 5%; top: 140px; }
+  .search-form input { min-width: 120px; }
+}
