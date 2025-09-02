@@ -44,7 +44,7 @@ ________________________________________________________________________________
 
 ________________________________________________________________________________________________
 
-
+![image alt](https://github.com/SahqibAkhtar/Earthquake-Visualizer/blob/main/Screenshot%202025-09-02%20123142.png?raw=true)
 
 📦 Installation
 
@@ -63,7 +63,7 @@ VITE_GEOAPIFY_KEY=your_api_key_here
 You can obtain a free API key from Geoapify
 
 _________________________________________________________________________________________
-
+![image alt](https://github.com/SahqibAkhtar/Earthquake-Visualizer/blob/main/Screenshot%202025-09-02%20123108.png?raw=true)
 ▶️ Running the Project
 
 Start the development server:
@@ -78,7 +78,7 @@ Preview the build:
 npm run preview
 
 _________________________________________________________________________________________--
-
+![image alt](https://github.com/SahqibAkhtar/Earthquake-Visualizer/blob/main/Screenshot%202025-09-02%20123121.png?raw=true)
 🌐 Deployment
 
 The app can be deployed to GitHub Pages, Vercel, or Netlify.
@@ -89,7 +89,9 @@ npm run deploy
 
 📸 Screenshots
 ![image alt](https://github.com/SahqibAkhtar/Earthquake-Visualizer/blob/main/Screenshot%202025-09-02%20124426.png?raw=true)
-
+![image alt](https://github.com/SahqibAkhtar/Earthquake-Visualizer/blob/main/Screenshot%202025-09-02%20124439.png?raw=true)
+![image alt](https://github.com/SahqibAkhtar/Earthquake-Visualizer/blob/main/Screenshot%202025-09-02%20124454.png?raw=true)
+![image alt](https://github.com/SahqibAkhtar/Earthquake-Visualizer/blob/main/Screenshot%202025-09-02%20124528.png?raw=true)
 
 __________________________________________________________________________________________-
 🤝 Contributing
