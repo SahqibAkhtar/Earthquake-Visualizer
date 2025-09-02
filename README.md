@@ -88,7 +88,7 @@ npm run deploy
 
 
 📸 Screenshots
-
+![image alt](https://github.com/SahqibAkhtar/Earthquake-Visualizer/blob/main/Screenshot%202025-09-02%20124426.png?raw=true)
 
 
 __________________________________________________________________________________________-
