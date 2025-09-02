@@ -110,7 +110,6 @@ export default function App() {
   }
 const [flyCoords, setFlyCoords] = useState(null);
 const doSearch = async (query) => {
-  
   const url = `https://api.geoapify.com/v1/geocode/search?text=${query}&apiKey=${import.meta.env.VITE_GEOAPIFY_KEY}`;
   try {
     const res = await fetch(url);
@@ -190,6 +189,7 @@ const doSearch = async (query) => {
           setSelectedQuake={setSelectedQuake}
           showHeat={showHeat}
           flyCoords={flyCoords}   // ✅ pass down
+          clearFlyCoords={()=> setFlyCoords(null)}
         />
         <Legend categories={categories} toggleCategory={toggleCategory} />
       </div>

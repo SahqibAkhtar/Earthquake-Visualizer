@@ -38,7 +38,19 @@ return null;
 }
 
 
-export default function MapView({ quakes, flyCoords, loading, error, darkMode, playTimeline, setSelectedQuake, searchLocation, showHeat }) {    const mapRef = useRef(null);
+export default function MapView({ 
+    quakes, 
+    flyCoords, 
+    loading, 
+    error, 
+    darkMode, 
+    playTimeline, 
+    setSelectedQuake, 
+    searchLocation, 
+    showHeat,
+    clearFlyCoords,
+     }) { 
+        const mapRef = useRef(null);
     const [displayCount, setDisplayCount] = useState(0);
     
     // when searchLocation changes, set view
@@ -81,14 +93,15 @@ export default function MapView({ quakes, flyCoords, loading, error, darkMode, p
     ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
     : 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
     
-    function FlyToLocation({ coords }) {
+    function FlyToLocation({ coords , clearCoords }) {
     const map = useMap();
     
     useEffect(() => {
         if (coords) {
             map.flyTo(coords, 6); // zoom level 6, adjust as needed
+        clearCoords();
         }
-    }, [coords, map]);
+    }, [coords, map ,clearCoords]);
     
     return null;
 }
@@ -136,7 +149,7 @@ export default function MapView({ quakes, flyCoords, loading, error, darkMode, p
     {loading && <div className="loading">Loading…</div>}
     {error && <div className="error">{error}</div>}
     {!loading && !displayed.length && <div className="no-data">No earthquakes for this filter</div>}
-    <FlyToLocation coords={flyCoords} />  {/* ✅ will zoom when flyCoords updates */}
+    <FlyToLocation coords={flyCoords} clearCoords={clearFlyCoords}/>  {/* ✅ will zoom when flyCoords updates */}
     </MapContainer>
 );
 }
