@@ -50,7 +50,7 @@ ________________________________________________________________________________
 
 Clone the repository and install dependencies:
 
-git clone https://github.com/your-username/Earthquake-Visualizer.git
+git clone https://github.com/SahqibAkhatar/Earthquake-Visualizer.git
 cd Earthquake-Visualizer
 npm install
 
@@ -93,7 +93,8 @@ npm run deploy
 ![image alt](https://github.com/SahqibAkhtar/Earthquake-Visualizer/blob/main/Screenshot%202025-09-02%20124454.png?raw=true)
 ![image alt](https://github.com/SahqibAkhtar/Earthquake-Visualizer/blob/main/Screenshot%202025-09-02%20124528.png?raw=true)
 
-__________________________________________________________________________________________-
+__________________________________________________________________________________________
+
 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
